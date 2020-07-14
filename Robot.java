@@ -43,9 +43,12 @@ import com.qualcomm.robotcore.util.Range;
  */
 @TeleOp(name = "ProblemSet5Tele")
 //@Disabled
-public class TestTeleOp extends OpMode {
+public class Robot extends OpMode {
 
   private ElapsedTime runtime = new ElapsedTime();
+
+  private static final double diameter = 0;
+  private static final int ticksPerRotation = 0;
 
   private DcMotor front_left_motor, front_right_motor, back_left_motor, back_right_motor;
   private Servo ws, gs, fs;
@@ -69,8 +72,52 @@ public class TestTeleOp extends OpMode {
     telemetry.addData("Status", "Initialized");
 
   }
+  public void stop(){
+    front_left_motor.setPower(0);
+    front_right_motor.setPower(0);
+    back_left_motor.setPower(0);
+    back_right_motor.setPower(0);
+  }
 
+  public void openServo(){
+    ws.setPosition(1);
+    gs.setPosition(1);
+    fs.setPosition(1);
+  }
 
+  public void closeServo(){
+    ws.setPosition(0);
+    gs.setPosition(0);
+    fs.setPosition(0);
+  }
+
+  public void drive(double drive, double strafe, double turn){
+    back_left_motor.setPower(drive - strafe + turn);
+    front_left_motor.setPower(drive + strafe + turn);
+    front_right_motor.setPower(drive - strafe - turn);
+    back_right_motor.setPower(drive + strafe - turn);
+  }
+
+  public void strafe(double strafe){
+    back_left_motor.setPower(0 - strafe + 0);
+    front_left_motor.setPower(0 + strafe + 0);
+    front_right_motor.setPower(0 - strafe - 0);
+    back_right_motor.setPower(0 + strafe - 0);
+  }
+
+  public void trueDrive(double drive){
+    back_left_motor.setPower(drive - 0 + 0);
+    front_left_motor.setPower(drive + 0 + 0);
+    front_right_motor.setPower(drive - 0 - 0);
+    back_right_motor.setPower(drive + 0 - 0);
+  }
+
+  public void turn(double turn){
+    back_left_motor.setPower(0 - 0 + turn);
+    front_left_motor.setPower(0 + 0 + turn);
+    front_right_motor.setPower(0 - 0 - turn);
+    back_right_motor.setPower(0 + 0 - turn);
+  }
   @Override
   public void init_loop() {
   }
