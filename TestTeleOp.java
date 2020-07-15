@@ -33,7 +33,6 @@ import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DigitalChannel;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
@@ -59,9 +58,9 @@ public class TestTeleOp extends OpMode {
     back_left_motor = hardwareMap.get(DcMotor.class,"back_left_motor");
     back_right_motor = hardwareMap.get(DcMotor.class,"back_right_motor");
 
-    ws = hardwareMap.get(Servo.class,"ws");
-    gs = hardwareMap.get(Servo.class,"gs");
-    fs = hardwareMap.get(Servo.class, "fs");
+    //ws = hardwareMap.get(Servo.class,"ws");
+   // gs = hardwareMap.get(Servo.class,"gs");
+   // fs = hardwareMap.get(Servo.class, "fs");
 
 
 
@@ -98,10 +97,10 @@ public class TestTeleOp extends OpMode {
 
 
     //Power settings for the robot to strafe
-    front_left_motor.setPower(-gamepad1.right_stick_x);
-    front_right_motor.setPower(gamepad1.right_stick_x);
-    back_left_motor.setPower(gamepad1.right_stick_x);
-    back_right_motor.setPower(-gamepad1.right_stick_x);
+    //front_left_motor.setPower(-gamepad1.right_stick_x);
+    //front_right_motor.setPower(gamepad1.right_stick_x);
+    //back_left_motor.setPower(gamepad1.right_stick_x);
+   // back_right_motor.setPower(-gamepad1.right_stick_x);
 
   }
 }
